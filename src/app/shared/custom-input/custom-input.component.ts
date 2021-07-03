@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -9,6 +9,7 @@ import { FormControl } from '@angular/forms';
 export class CustomInputComponent implements OnInit {
 
   mainInput = new FormControl('');
+  @Output() text = new EventEmitter<string>();
 
   constructor() { }
 
@@ -16,4 +17,7 @@ export class CustomInputComponent implements OnInit {
     this.mainInput.setValue('Test');
   }
 
+  onButtonClick(): void {
+    this.text.emit(this.mainInput.value);
+  }
 }

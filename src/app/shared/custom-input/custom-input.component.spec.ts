@@ -26,4 +26,17 @@ describe('CustomInputComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should emit text on button click', () => {
+    spyOn(component.text, 'emit');
+
+    component.mainInput.setValue("Tests");
+    const nativeElement = fixture.nativeElement;
+    const button = nativeElement.querySelector('button');
+    button.dispatchEvent(new Event('click'));
+ 
+    fixture.detectChanges();
+ 
+    expect(component.text.emit).toHaveBeenCalledWith('Tests');
+ });
 });

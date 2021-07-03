@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'todo-list';
+  reminders: string[] = [];
+
+  addReminder(text: string) {
+    this.reminders.push(text);
+  }
 }
